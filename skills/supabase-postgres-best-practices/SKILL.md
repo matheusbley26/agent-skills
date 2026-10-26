@@ -55,6 +55,16 @@ Each rule file contains:
 - Additional context and references
 - Supabase-specific notes (when applicable)
 
+## Supabase Security Rules (local fork)
+
+- `references/security-views-security-invoker.md` — views bypass RLS unless `security_invoker = true`
+- `references/security-rls-update-needs-select.md` — UPDATE without a SELECT policy silently affects 0 rows
+- `references/security-rls-using-with-check.md` — UPDATE policies need both `USING` and `WITH CHECK`
+- `references/security-rls-to-authenticated-not-authorization.md` — `TO authenticated` needs a row predicate (BOLA/IDOR)
+- `references/security-rls-auth-role-deprecated.md` — `auth.role()` is deprecated and passes for anonymous sign-ins
+- `references/security-definer-exposed-schema.md` — SECURITY DEFINER in an exposed schema is callable by `anon`: check `auth.uid()`, REVOKE EXECUTE
+- `references/security-storage-upsert-policies.md` — Storage upsert needs INSERT + SELECT + UPDATE
+
 ## References
 
 - https://www.postgresql.org/docs/current/
